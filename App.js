@@ -1,16 +1,41 @@
 import * as React from "react";
-import { Text, View } from "react-native";
+import { Text, View, ActivityIndicator, StyleSheet } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Ionicons } from "@expo/vector-icons";
 import { AddDeckScreen } from "./components/AddDeck";
+import { getDecks } from "./utlis/helpers";
 
-function DecksScreen() {
-	return (
-		<View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-			<Text>Decks!</Text>
-		</View>
-	);
+class DecksScreen extends React.Component {
+	state = {
+		decks: null,
+		loading: false,
+	};
+	async componentDidMount() {
+		setTimeout(
+			() =>
+				getDecks().then((data) =>
+					this.setState({ decks: data, loading: true })
+				),
+			400
+		);
+	}
+
+	render() {
+		const { decks, loading } = this.state;
+		if (!loading) {
+			return (
+				<View style={[styles.container, styles.horizontal]}>
+					<ActivityIndicator size="large" color="tomato" />
+				</View>
+			);
+		}
+		return (
+			<View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+				<Text>{JSON.stringify(this.state)}</Text>
+			</View>
+		);
+	}
 }
 
 const Tab = createBottomTabNavigator();
@@ -45,3 +70,15 @@ function NavBar() {
 export default function App() {
 	return <NavigationContainer>{NavBar()}</NavigationContainer>;
 }
+
+const styles = StyleSheet.create({
+	container: {
+		flex: 1,
+		justifyContent: "center",
+	},
+	horizontal: {
+		flexDirection: "row",
+		justifyContent: "space-around",
+		padding: 10,
+	},
+});
