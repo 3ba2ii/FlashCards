@@ -1,17 +1,26 @@
 import * as React from "react";
-import { Text, View, ActivityIndicator, StyleSheet } from "react-native";
+import {
+	Text,
+	View,
+	ActivityIndicator,
+	StyleSheet,
+	FlatList,
+	SafeAreaView,
+	TouchableOpacity,
+} from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Ionicons } from "@expo/vector-icons";
 import { AddDeckScreen } from "./components/AddDeck";
 import { getDecks } from "./utlis/helpers";
+import Constants from "expo-constants";
 
 class DecksScreen extends React.Component {
 	state = {
 		decks: null,
 		loading: false,
 	};
-	async componentDidMount() {
+	componentDidMount() {
 		setTimeout(
 			() =>
 				getDecks().then((data) =>
@@ -20,6 +29,21 @@ class DecksScreen extends React.Component {
 			400
 		);
 	}
+	handleIndividualDeck = (deck) => {
+		console.log(deck);
+		//TODO Navigate to selected Deck Screen
+	};
+	renderDecks = ({ item }) => {
+		return (
+			<TouchableOpacity
+				style={[styles.deckContainer]}
+				onPress={() => this.handleIndividualDeck(item)}
+			>
+				<Text style={[styles.deckHeader]}>{item["title"]}</Text>
+				<Text>{item["questions"].length} Cards </Text>
+			</TouchableOpacity>
+		);
+	};
 
 	render() {
 		const { decks, loading } = this.state;
@@ -31,8 +55,18 @@ class DecksScreen extends React.Component {
 			);
 		}
 		return (
-			<View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-				<Text>{JSON.stringify(this.state)}</Text>
+			<View>
+				<Text
+					style={{
+						fontSize: 40,
+						marginVertical: 50,
+						color: "#333",
+						textAlign: "center",
+					}}
+				>
+					DECKS
+				</Text>
+				<FlatList data={decks} renderItem={this.renderDecks} />
 			</View>
 		);
 	}
@@ -68,7 +102,16 @@ function NavBar() {
 	);
 }
 export default function App() {
-	return <NavigationContainer>{NavBar()}</NavigationContainer>;
+	return (
+		<NavigationContainer>
+			<SafeAreaView
+				backgroundColor="tomato"
+				height={Constants.statusBarHeight}
+			/>
+
+			{NavBar()}
+		</NavigationContainer>
+	);
 }
 
 const styles = StyleSheet.create({
@@ -80,5 +123,16 @@ const styles = StyleSheet.create({
 		flexDirection: "row",
 		justifyContent: "space-around",
 		padding: 10,
+	},
+	deckContainer: {
+		flex: 1,
+		justifyContent: "center",
+		alignItems: "center",
+		padding: 20,
+	},
+	deckHeader: {
+		fontSize: 30,
+		color: "tomato",
+		alignItems: "center",
 	},
 });
