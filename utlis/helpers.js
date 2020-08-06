@@ -2,7 +2,7 @@ import { AsyncStorage } from "react-native";
 import { DECKS_STORAGE_KEY } from "./_decks";
 import { setDummyData } from "./_decks";
 
-export function loadDummyDecks() {
+export async function loadDummyDecks() {
 	let data = setDummyData();
 	try {
 		Object.keys(data).forEach((key) => {

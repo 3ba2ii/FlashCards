@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useState } from "react";
 import {
 	Text,
 	View,
@@ -12,7 +12,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Ionicons } from "@expo/vector-icons";
 import { AddDeckScreen } from "./components/AddDeck";
-import { getDecks } from "./utlis/helpers";
+import { loadDummyDecks, getDecks } from "./utlis/helpers";
 import Constants from "expo-constants";
 
 class DecksScreen extends React.Component {
@@ -20,13 +20,15 @@ class DecksScreen extends React.Component {
 		decks: null,
 		loading: false,
 	};
-	componentDidMount() {
-		setTimeout(
-			() =>
-				getDecks().then((data) =>
-					this.setState({ decks: data, loading: true })
-				),
-			400
+	async componentDidMount() {
+		loadDummyDecks().then((res) =>
+			setTimeout(
+				() =>
+					getDecks().then((data) =>
+						this.setState({ decks: data, loading: true })
+					),
+				400
+			)
 		);
 	}
 	handleIndividualDeck = (deck) => {
