@@ -79,7 +79,7 @@ export default function AddCard({ route, navigation }) {
 			<TouchableOpacity
 				style={[styles.btn]}
 				onPress={() => {
-					navigation.navigate("Decks");
+					navigation.navigate("Deck");
 					return handleAddCardToDeck(key, question, answer);
 				}}
 				disabled={!question || !answer}

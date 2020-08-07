@@ -55,3 +55,6 @@ export function addCardToDeck(key, question, answer) {
 		.then(() => console.log("ADDED CARD SUCCESSFULLY"))
 		.catch(() => console.log("ERROR WHILE ADDING CARD"));
 }
+export function getDeck(key) {
+	return AsyncStorage.getItem(key);
+}

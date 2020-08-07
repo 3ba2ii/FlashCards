@@ -11,10 +11,11 @@ import { fetchFonts } from "../fonts";
 import { AppLoading } from "expo";
 
 const addDeckHandler = (title, navigation) => {
+	const deck = { key: title, questions: [] };
 	saveDeckTitle(title)
 		.then(() => {
 			console.log("SUCCESS");
-			setTimeout(() => navigation.navigate("Decks"), 300);
+			navigation.navigate("Deck", (params = [deck]));
 		})
 		.catch((err) => console.log("ERROR", err));
 };
@@ -53,6 +54,7 @@ export function AddDeckScreen({ navigation }) {
 					setText("");
 					return addDeckHandler(text, navigation);
 				}}
+				disabled={!text}
 			>
 				<Text style={{ color: "#fff", fontFamily: "roboto-bold" }}>
 					Add Deck

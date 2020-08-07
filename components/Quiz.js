@@ -61,7 +61,19 @@ export default class Quiz extends React.Component {
 				{!showAnswer ? (
 					<Text style={[styles.header]}>{question}</Text>
 				) : (
-					<Text style={[styles.header]}>{answer}</Text>
+					<View>
+						<Text
+							style={{
+								fontSize: 20,
+								textAlign: "center",
+								marginTop: 20,
+								color: "#333",
+							}}
+						>
+							The answer is
+						</Text>
+						<Text style={[styles.header]}>{answer}</Text>
+					</View>
 				)}
 
 				{!showAnswer && (
