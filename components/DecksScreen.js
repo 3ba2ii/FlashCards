@@ -29,11 +29,12 @@ export class DecksScreen extends React.Component {
 			getDecks().then((data) => this.setState({ decks: data, loading: true }));
 		}
 	}
+	componentDidUpdate() {
+		getDecks().then((decks) => {
+			this.setState({ decks: decks });
+		});
+	}
 
-	handleIndividualDeck = (deck) => {
-		console.log(deck);
-		//TODO Navigate to selected Deck Screen
-	};
 	renderDecks = ({ item }) => {
 		return (
 			<TouchableOpacity
@@ -50,7 +51,7 @@ export class DecksScreen extends React.Component {
 
 	render() {
 		const { decks, loading } = this.state;
-		console.log(decks);
+
 		if (!loading) {
 			return (
 				<View style={[styles.container, styles.horizontal]}>
