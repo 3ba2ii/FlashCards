@@ -17,8 +17,6 @@ const addDeckHandler = (title, navigation) => {
 			setTimeout(() => navigation.navigate("Decks"), 300);
 		})
 		.catch((err) => console.log("ERROR", err));
-
-	//TODO Navigate to Home
 };
 export function AddDeckScreen({ navigation }) {
 	const [text, setText] = useState("");

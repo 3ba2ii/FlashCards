@@ -5,6 +5,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createStackNavigator } from "@react-navigation/stack";
 import { NavBar } from "./components/NavBar";
 import DeckDetail from "./components/DeckDetail";
+import AddCard from "./components/AddCard";
 
 export const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -22,6 +23,7 @@ export default function App() {
 			<Stack.Navigator>
 				<Stack.Screen name="Decks" component={NavBar} />
 				<Stack.Screen name="Deck" component={DeckDetail} />
+				<Stack.Screen name="AddCard" component={AddCard} />
 			</Stack.Navigator>
 		</NavigationContainer>
 	);

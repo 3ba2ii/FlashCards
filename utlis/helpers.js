@@ -1,5 +1,4 @@
 import { AsyncStorage } from "react-native";
-import { DECKS_STORAGE_KEY } from "./_decks";
 import { setDummyData } from "./_decks";
 
 export async function loadDummyDecks() {
@@ -40,4 +39,36 @@ export function saveDeckTitle(title) {
 		title,
 		JSON.stringify({ title: title, questions: [] })
 	);
+}
+
+export function addCardToDeck(key, question, answer) {
+	AsyncStorage.getItem(key)
+		.then((res) => {
+			let { questions } = JSON.parse(res);
+
+			questions.push({ question: question, answer: answer });
+
+			AsyncStorage.mergeItem(key, JSON.stringify({ questions }))
+				.then(() => console.log("ADDED CARD SUCCESSFULLY"))
+				.catch(() => console.log("ERROR WHILE ADDING CARD"));
+		})
+		.then(() => console.log("ADDED CARD SUCCESSFULLY"))
+		.catch(() => console.log("ERROR WHILE ADDING CARD"));
+	/* try {
+		AsyncStorage.getItem(title).then((result) => {
+			const data = JSON.parse(result);
+
+			let questions = data.questions;
+			questions.push(card);
+
+			AsyncStorage.mergeItem(
+				title,
+				JSON.stringify({
+					questions,
+				})
+			);
+		});
+	} catch (error) {
+		console.log(error);
+	} */
 }

@@ -26,5 +26,3 @@ export function setDummyData() {
 	};
 	return dummyData;
 }
-
-export const DECKS_STORAGE_KEY = "DecksFlashcards:decks";

@@ -2,9 +2,14 @@ import React from "react";
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 
 class DeckDetail extends React.Component {
+	setTitle = (key) => {
+		this.props.navigation.setOptions({
+			title: `${key}`,
+		});
+	};
 	render() {
 		const { key, questions } = this.props.route.params[0];
-		console.log(key, questions);
+		this.setTitle(key);
 		return (
 			<View style={[styles.container]}>
 				<Text style={[styles.deckHeader]}>{key}</Text>
@@ -13,17 +18,23 @@ class DeckDetail extends React.Component {
 				) : (
 					<Text> You didn't add any card to this deck</Text>
 				)}
-
-				{questions.length > 0 ? (
-					<View style={{ marginTop: "auto" }}>
-						<TouchableOpacity style={[styles.btn]}>
-							<Text style={[styles.text]}>Add Card</Text>
-						</TouchableOpacity>
+				<View>
+					<TouchableOpacity
+						style={[styles.btn]}
+						onPress={() =>
+							this.props.navigation.navigate("AddCard", {
+								key: key,
+							})
+						}
+					>
+						<Text style={[styles.text]}>Add Card</Text>
+					</TouchableOpacity>
+					{questions.length > 0 ? (
 						<TouchableOpacity style={[styles.btn]}>
 							<Text style={[styles.text]}>Start Quiz</Text>
 						</TouchableOpacity>
-					</View>
-				) : null}
+					) : null}
+				</View>
 			</View>
 		);
 	}
@@ -44,10 +55,10 @@ const styles = StyleSheet.create({
 		padding: 5,
 	},
 	btn: {
-		padding: 25,
+		padding: 20,
 		borderRadius: 30,
 		backgroundColor: "#333",
-		margin: 10,
+		margin: 15,
 	},
 	text: {
 		fontSize: 14,
