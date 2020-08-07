@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import { saveDeckTitle } from "../utlis/helpers";
 import {
 	Text,
 	View,
@@ -10,10 +10,17 @@ import {
 import { fetchFonts } from "../fonts";
 import { AppLoading } from "expo";
 
-const addDeckHandler = (title) => {
-	console.log(title);
+const addDeckHandler = (title, navigation) => {
+	saveDeckTitle(title)
+		.then(() => {
+			console.log("SUCCESS");
+			setTimeout(() => navigation.navigate("Decks"), 300);
+		})
+		.catch((err) => console.log("ERROR", err));
+
+	//TODO Navigate to Home
 };
-export function AddDeckScreen() {
+export function AddDeckScreen({ navigation }) {
 	const [text, setText] = useState("");
 	const [dataLoaded, setDataLoaded] = useState(false);
 	if (!dataLoaded) {
@@ -37,7 +44,6 @@ export function AddDeckScreen() {
 					fontFamily: "roboto-regular",
 					fontSize: 20,
 					color: "#222",
-					alignSelf: "left",
 				}}
 				placeholder="e.g. Data Structure."
 				onChangeText={(text) => setText(text)}
@@ -45,7 +51,10 @@ export function AddDeckScreen() {
 			/>
 			<TouchableOpacity
 				style={[styles.btn]}
-				onPress={() => addDeckHandler(text)}
+				onPress={() => {
+					setText("");
+					return addDeckHandler(text, navigation);
+				}}
 			>
 				<Text style={{ color: "#fff", fontFamily: "roboto-bold" }}>
 					Add Deck

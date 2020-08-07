@@ -35,3 +35,9 @@ export function getDecks() {
 		});
 	});
 }
+export function saveDeckTitle(title) {
+	return AsyncStorage.setItem(
+		title,
+		JSON.stringify({ title: title, questions: [] })
+	);
+}
