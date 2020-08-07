@@ -7,28 +7,27 @@ import { NavBar } from "./components/NavBar";
 import DeckDetail from "./components/DeckDetail";
 import AddCard from "./components/AddCard";
 import Quiz from "./components/Quiz";
+import { setLocalNotification } from "./utlis/notifications";
 
 export const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
-function Deck() {
-	return (
-		<View>
-			<Text>Hello</Text>
-		</View>
-	);
-}
 
-export default function App() {
-	return (
-		<NavigationContainer>
-			<Stack.Navigator>
-				<Stack.Screen name="Decks" component={NavBar} />
-				<Stack.Screen name="Deck" component={DeckDetail} />
-				<Stack.Screen name="AddCard" component={AddCard} />
-				<Stack.Screen name="Quiz" component={Quiz} />
-			</Stack.Navigator>
-		</NavigationContainer>
-	);
+export default class App extends React.Component {
+	componentDidMount() {
+		setLocalNotification();
+	}
+	render() {
+		return (
+			<NavigationContainer>
+				<Stack.Navigator>
+					<Stack.Screen name="Decks" component={NavBar} />
+					<Stack.Screen name="Deck" component={DeckDetail} />
+					<Stack.Screen name="AddCard" component={AddCard} />
+					<Stack.Screen name="Quiz" component={Quiz} />
+				</Stack.Navigator>
+			</NavigationContainer>
+		);
+	}
 }
 export const styles = StyleSheet.create({
 	container: {

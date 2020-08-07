@@ -3,31 +3,38 @@ import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import { getDeck } from "../utlis/helpers";
 
 class DeckDetail extends React.Component {
+	_isMounted = false;
 	state = {
 		key: null,
 		questions: null,
 		loaded: false,
 	};
 	componentDidMount() {
+		this._isMounted = true;
 		const { key } = this.props.route.params[0];
 		getDeck(key).then((deck) => {
 			const { title, questions } = JSON.parse(deck);
-			this.setState({
-				key: title,
-				questions: questions,
-				loaded: true,
-			});
+			this._isMounted &&
+				this.setState({
+					key: title,
+					questions: questions,
+					loaded: true,
+				});
 		});
 	}
 	componentDidUpdate() {
 		getDeck(this.state.key).then((deck) => {
 			const { title, questions } = JSON.parse(deck);
-			this.setState({
-				key: title,
-				questions: questions,
-				loaded: true,
-			});
+			this._isMounted &&
+				this.setState({
+					key: title,
+					questions: questions,
+					loaded: true,
+				});
 		});
+	}
+	componentWillUnmount() {
+		this._isMounted = false;
 	}
 	setTitle = (key) => {
 		this.props.navigation.setOptions({

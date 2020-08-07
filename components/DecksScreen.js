@@ -10,31 +10,35 @@ import { loadDummyDecks, getDecks } from "../utlis/helpers";
 import { styles } from "../App";
 
 export class DecksScreen extends React.Component {
+	_isMounted = false;
 	state = {
 		decks: null,
 		loading: false,
 	};
 	componentDidMount() {
+		this._isMounted = true;
 		if (this.state.decks === null) {
 			loadDummyDecks().then((res) =>
-				setTimeout(
-					() =>
-						getDecks().then((data) =>
-							this.setState({ decks: data, loading: true })
-						),
-					400
+				getDecks().then(
+					(data) =>
+						this._isMounted && this.setState({ decks: data, loading: true })
 				)
 			);
 		} else {
-			getDecks().then((data) => this.setState({ decks: data, loading: true }));
+			getDecks().then(
+				(data) =>
+					this._isMounted && this.setState({ decks: data, loading: true })
+			);
 		}
 	}
 	componentDidUpdate() {
 		getDecks().then((decks) => {
-			this.setState({ decks: decks });
+			this._isMounted && this.setState({ decks: decks });
 		});
 	}
-
+	componentWillUnmount() {
+		this._isMounted = false;
+	}
 	renderDecks = ({ item }) => {
 		return (
 			<TouchableOpacity

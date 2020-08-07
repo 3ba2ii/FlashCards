@@ -1,5 +1,9 @@
 import React from "react";
 import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
+import {
+	clearLocalNotification,
+	setLocalNotification,
+} from "../utlis/notifications";
 
 export default class Quiz extends React.Component {
 	state = {
@@ -16,11 +20,15 @@ export default class Quiz extends React.Component {
 			};
 		});
 	};
+	handleNotifications = () => {
+		clearLocalNotification().then(setLocalNotification);
+	};
 	render() {
 		const { showAnswer, score, selectedQuestion } = this.state;
-		const { title, questions } = this.props.route.params;
+		const { questions } = this.props.route.params;
 
 		if (selectedQuestion >= questions.length) {
+			this.handleNotifications();
 			return (
 				<View style={[styles.container]}>
 					<Text style={[styles.header]}>
