@@ -54,21 +54,4 @@ export function addCardToDeck(key, question, answer) {
 		})
 		.then(() => console.log("ADDED CARD SUCCESSFULLY"))
 		.catch(() => console.log("ERROR WHILE ADDING CARD"));
-	/* try {
-		AsyncStorage.getItem(title).then((result) => {
-			const data = JSON.parse(result);
-
-			let questions = data.questions;
-			questions.push(card);
-
-			AsyncStorage.mergeItem(
-				title,
-				JSON.stringify({
-					questions,
-				})
-			);
-		});
-	} catch (error) {
-		console.log(error);
-	} */
 }

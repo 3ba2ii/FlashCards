@@ -30,7 +30,15 @@ class DeckDetail extends React.Component {
 						<Text style={[styles.text]}>Add Card</Text>
 					</TouchableOpacity>
 					{questions.length > 0 ? (
-						<TouchableOpacity style={[styles.btn]}>
+						<TouchableOpacity
+							style={[styles.btn]}
+							onPress={() =>
+								this.props.navigation.navigate(
+									"Quiz",
+									(params = { title: key, questions: questions })
+								)
+							}
+						>
 							<Text style={[styles.text]}>Start Quiz</Text>
 						</TouchableOpacity>
 					) : null}
