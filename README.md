@@ -1,4 +1,4 @@
-# Drawer navigation example
+# Flash Cards Project
 
 <p>
   <!-- iOS -->
@@ -14,7 +14,7 @@
 - Install with `yarn` or `npm install`.
 - Run `expo start` to try it out.
 
-## 📝 Notes
+## 🧪 Testing
 
-- This is a very basic example from the [react navigation](https://reactnavigation.org/) docs.
-- [Drawer navigation documentation](https://reactnavigation.org/docs/drawer-based-navigation).
+- The application was tested on IOS Simulator (IPhone 11 Pro)
+- Real mobile through Expo App on IPhone 7+
