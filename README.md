@@ -44,6 +44,7 @@ $ click i for ios simulator, Q for android simulator
 ##  Testing
 
 ✅ The application was tested on IOS Simulator (IPhone 11 Pro) using expo.
+
 ✅ Real mobile device (IPhone 7+)
 
 
