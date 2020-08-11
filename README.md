@@ -1,7 +1,7 @@
 # Mobile Flashcards
 
+![IOS](https://img.shields.io/badge/iOS-4630EB.svg?style=flat-square&logo=APPLE&labelColor=999999&logoColor=fff) ![Android](https://img.shields.io/badge/Android-4630EB.svg?style=flat-square&logo=ANDROID&labelColor=A4C639&logoColor=fff) [![Build Status](https://travis-ci.org/anfederico/Clairvoyant.svg?branch=master)](https://travis-ci.org/anfederico/Clairvoyant) ![Dependencies](https://img.shields.io/badge/dependencies-up%20to%20date-brightgreen.svg)![](https://github.com/anfederico/Clairvoyant/issues) [![JavaScript Style Guide: Good Parts](https://img.shields.io/badge/code%20style-goodparts-brightgreen.svg?style=flat)](https://github.com/dwyl/goodparts "JavaScript The Good Parts") ![Contributions welcome](https://img.shields.io/badge/contributions-welcome-orange.svg) [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT) [![NPM Version](https://img.shields.io/npm/v/npm.svg?style=flat)]() ![GitHub last commit](https://img.shields.io/github/last-commit/3ba2ii/FlashCards?color=blue)
 
-![IOS](https://img.shields.io/badge/iOS-4630EB.svg?style=flat-square&logo=APPLE&labelColor=999999&logoColor=fff) ![Android](https://img.shields.io/badge/Android-4630EB.svg?style=flat-square&logo=ANDROID&labelColor=A4C639&logoColor=fff)  [![Build Status](https://travis-ci.org/anfederico/Clairvoyant.svg?branch=master)](https://travis-ci.org/anfederico/Clairvoyant) ![Dependencies](https://img.shields.io/badge/dependencies-up%20to%20date-brightgreen.svg)![](https://github.com/anfederico/Clairvoyant/issues) [![JavaScript Style Guide: Good Parts](https://img.shields.io/badge/code%20style-goodparts-brightgreen.svg?style=flat)](https://github.com/dwyl/goodparts "JavaScript The Good Parts") ![Contributions welcome](https://img.shields.io/badge/contributions-welcome-orange.svg) [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT) [![NPM Version](https://img.shields.io/npm/v/npm.svg?style=flat)]() ![GitHub last commit](https://img.shields.io/github/last-commit/3ba2ii/FlashCards?color=blue)
 <p>A mobile application (Android or iOS - or both) that allows users to study collections of flashcards. The app will allow users to create different categories of flashcards called "decks", add flashcards to those decks, then take quizzes on those decks.</>
 <br/>
 <br/>
@@ -36,23 +36,22 @@ $ cd FlashCards
 $ expo start
 $ click i for ios simulator, Q for android simulator
 ```
+
 ## How to use
 
 - Install with `yarn` or `npm install`.
 - Run `expo start` to run the application.
 
-##  Testing
+## Testing
 
 ✅ The application was tested on IOS Simulator (IPhone 11 Pro) using expo.
 
 ✅ Real mobile device (IPhone 7+)
 
-
 ## Demo-Preview
 
-
 <p align="center">
-  <img width=50% src="https://i.ibb.co/ZNfCFZ7/ezgif-1-c5ecb1ff0ba2.gif">
+  <img width=50% src="https://i.ibb.co/gvn3bJ5/ezgif-1-c322f0abd160.gif">
 </p>
 
 ## Authors
