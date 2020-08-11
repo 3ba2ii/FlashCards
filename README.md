@@ -6,7 +6,7 @@
 <br/>
 <br/>
 <p align="center">
-<img src = 'https://i.ibb.co/LhwYhyx/R-copy.png' width =50%/>
+<img src = 'https://i.ibb.co/LhwYhyx/R-copy.png' width = 50%/>
 </p>
 
 ## Built With
@@ -52,7 +52,7 @@ $ click i for ios simulator, Q for android simulator
 
 
 <p align="center">
-  <img width=50% src="https://im5.ezgif.com/tmp/ezgif-5-38aecd1078d7.gif">
+  <img width=50% src="https://i.ibb.co/ZNfCFZ7/ezgif-1-c5ecb1ff0ba2.gif">
 </p>
 
 ## Authors
