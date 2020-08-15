@@ -54,11 +54,10 @@ $ click i for ios simulator, Q for android simulator
   <img width=50% src="https://i.ibb.co/gvn3bJ5/ezgif-1-c322f0abd160.gif">
 </p>
 
+
 ## Authors
 
-- **Ahmed Ghonem**
-
-[![GitHub followers](https://img.shields.io/github/followers/3ba2ii?style=social)](https://github.com/3ba2ii) [![Twitter Follow](https://img.shields.io/twitter/follow/3ba2ii?style=social)](https://twitter.com/3ba2ii)
+- **Ahmed Ghonem** - [**Github**](https://github.com/3ba2ii)
 
 ## Contributing
 
